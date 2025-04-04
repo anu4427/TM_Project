@@ -17,11 +17,11 @@
         </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle p-3"  id="navbardrop" data-toggle="dropdown" style="cursor: pointer;">
-           <i class="fa fa-user"></i>{{username}}
+           <i class="fa fa-user"></i>{{currentUser?.name || 'User'}}
           </a>
           <div class="dropdown-menu dropdown-menu-right bg-light">
             <a class="dropdown-item p-2" (click)="gotoprofilepage()" style="cursor: pointer;">PROFILE</a>
-            <a class="dropdown-item p-2" (click)="logoutemployee()" style="cursor: pointer;">LOGOUT</a>
+            <a class="dropdown-item p-2" (click)="logout()" style="cursor: pointer;">LOGOUT</a>
           </div>
         </li>
       </ul>

@@ -5,9 +5,10 @@
     "ng": "ng",
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && ng serve --port 4201",
     "build": "set NODE_OPTIONS=--openssl-legacy-provider && ng build",
-    "test": "set NODE_OPTIONS=--openssl-legacy-provider && ng test",
+    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:all": "node start.js"
   },
   "private": true,
   "dependencies": {

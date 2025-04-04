@@ -1,28 +1,41 @@
-const sql = require('mssql');
+const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const config = {
-    user: 'sa',
-    password: 'ANUmadhu@0828',
-    server: 'AnuMadhu\\SQLEXPRESS',
-    database: 'JobPortal',
-    options: {
-        trustServerCertificate: true,
-        encrypt: true,
-        enableArithAbort: true
-    }
+    host: process.env.DB_SERVER,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 };
+
+let pool = null;
 
 async function connectDB() {
     try {
-        console.log('Attempting to connect to SQL Server...');
-        const pool = await sql.connect(config);
-        console.log('Connected to SQL Server successfully');
+        if (pool) {
+            console.log('Using existing database connection pool');
+            return pool;
+        }
+
+        console.log('Attempting to connect to MySQL...');
+        pool = await mysql.createPool(config);
+        console.log('Connected to MySQL successfully');
         return pool;
     } catch (err) {
         console.error('Database connection failed:', err);
+        pool = null;
         throw err;
     }
 }
 
-module.exports = { connectDB, sql }; 
+async function getPool() {
+    if (!pool) {
+        await connectDB();
+    }
+    return pool;
+}
+
+module.exports = { connectDB, getPool }; 

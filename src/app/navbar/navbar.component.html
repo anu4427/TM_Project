@@ -6,14 +6,41 @@
     <a class="navbar-brand" href="#"><img src="/assets/job-logo.png" height="50px" width="50px" alt="logo"> Jobs</a>
   
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      
       <form class="form-inline">
         <ul class="navbar-nav my-2 my-lg-0">
-          <li class="nav-item">
-            <a routerLink="/login/emp_login" class="nav-link p-3" > <i class="fa fa-lock"></i> LOGIN</a>
+          <!-- Show these links only when user is not logged in -->
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a routerLink="/login" class="nav-link p-3"><i class="fa fa-lock"></i> LOGIN</a>
           </li>
-          <li class="nav-item">
-            <a routerLink="/register/emp_register" class="nav-link p-3 " ><i class="fa fa-address-book" aria-hidden="true"></i>REGISTER</a>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a routerLink="/register" class="nav-link p-3"><i class="fa fa-address-book" aria-hidden="true"></i>REGISTER</a>
+          </li>
+          
+          <!-- Show these links when user is logged in as a job seeker -->
+          <li class="nav-item" *ngIf="isLoggedIn && isSeeker">
+            <a (click)="goToDashboard()" class="nav-link p-3" style="cursor: pointer;"><i class="fa fa-dashboard"></i> DASHBOARD</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn && isSeeker">
+            <a routerLink="/jobs" class="nav-link p-3"><i class="fa fa-search"></i> SEARCH JOBS</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn && isSeeker">
+            <a (click)="goToProfile()" class="nav-link p-3" style="cursor: pointer;"><i class="fa fa-user"></i> PROFILE</a>
+          </li>
+          
+          <!-- Show these links when user is logged in as a recruiter -->
+          <li class="nav-item" *ngIf="isLoggedIn && isRecruiter">
+            <a (click)="goToDashboard()" class="nav-link p-3" style="cursor: pointer;"><i class="fa fa-dashboard"></i> DASHBOARD</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn && isRecruiter">
+            <a routerLink="/jobs" class="nav-link p-3"><i class="fa fa-search"></i> BROWSE JOBS</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn && isRecruiter">
+            <a (click)="goToProfile()" class="nav-link p-3" style="cursor: pointer;"><i class="fa fa-user"></i> PROFILE</a>
+          </li>
+          
+          <!-- Show this link when user is logged in (any type) -->
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a (click)="logout()" class="nav-link p-3" style="cursor: pointer;"><i class="fa fa-sign-out"></i> LOGOUT</a>
           </li>
         </ul>
       </form>

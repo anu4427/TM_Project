@@ -1,28 +1,42 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {ReactiveFormsModule,FormsModule} from '@angular/forms';
-import { AppRoutingModule,routingComponents } from './app-routing.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { LoginComponent } from './Auth/login/login.component';
-import {ForseekerService} from './forseeker.service';
-import {ForrecruiterService} from './forrecruiter.service';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { ForseekerService } from './forseeker.service';
+import { ForrecruiterService } from './forrecruiter.service';
 import { AuthService } from './services/auth.service';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
-//import { SearchComponent } from './seeker/search/search.component';
-//import { EditprofileComponent } from './seeker/editprofile/editprofile.component';
-//import { PostjobComponent } from './recruiter/rdashboard/postjob/postjob.component';
-//import { RdashboardComponent } from './recruiter/rdashboard/rdashboard.component';
-//import { RprofileComponent } from './recruiter/rprofile/rprofile.component';
-//import { PostedjobsComponent } from './recruiter/rdashboard/postedjobs/postedjobs.component';
-//import { AppliedEmployeesComponent } from './recruiter/rdashboard/applied-employees/applied-employees.component';
-//import { EmpProfileComponent } from './seeker/emp-profile/emp-profile.component';
-//import { RegisComponent } from './Auth/regis/regis.component';
-//import { DashboardComponent } from './dashboard/dashboard.component';
-//import { LoginComponent } from './login/login.component';
-// import { JobsComponent } from './dashboard/jobs/jobs.component';
-// import { AppliedjobsComponent } from './dashboard/appliedjobs/appliedjobs.component';
+import { JobsService } from './services/jobs.service';
+import { ApplicationsService } from './services/applications.service';
+import { ProfilesService } from './services/profiles.service';
+import { JobSearchComponent } from './components/job-search/job-search.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SeekerDashboardComponent } from './components/seeker-dashboard/seeker-dashboard.component';
+import { RecruiterDashboardComponent } from './components/recruiter-dashboard/recruiter-dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
+import { RoleGuard } from './guards/role.guard';
+import { PostJobComponent } from './components/post-job/post-job.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { 
+    path: 'seeker/dashboard', 
+    component: SeekerDashboardComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'seeker' }
+  },
+  { 
+    path: 'recruiter/dashboard', 
+    component: RecruiterDashboardComponent,
+    canActivate: [RoleGuard],
+    data: { role: 'recruiter' }
+  }
+];
 
 @NgModule({
   declarations: [
@@ -30,28 +44,27 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     NavbarComponent,
     routingComponents,
     LoginComponent,
-   // SearchComponent,
-    //EditprofileComponent,
-    //PostjobComponent,
-    // RdashboardComponent,
-    // RprofileComponent,
-    // PostedjobsComponent,
-    // AppliedEmployeesComponent,
-    //EmpProfileComponent,
-    //RegisComponent,
+    JobSearchComponent,
+    RegisterComponent,
+    SeekerDashboardComponent,
+    RecruiterDashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     ForseekerService,
     ForrecruiterService,
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    JobsService,
+    ApplicationsService,
+    ProfilesService,
+    RoleGuard
   ],
   bootstrap: [AppComponent]
 })

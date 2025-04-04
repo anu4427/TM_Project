@@ -1,12 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/db');
+const { auth, checkRole } = require('./middleware/auth');
 const authRoutes = require('./routes/auth');
+const jobsRoutes = require('./routes/jobs');
+const applicationsRoutes = require('./routes/applications');
+const profilesRoutes = require('./routes/profiles');
 
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:4200', 'http://localhost:4201'],
+    credentials: true
+}));
 app.use(express.json());
 
 // Test route
@@ -14,8 +21,13 @@ app.get('/', (req, res) => {
     res.json({ message: 'Job Portal API is running' });
 });
 
-// Routes
+// Public routes
 app.use('/api/auth', authRoutes);
+
+// Protected routes
+app.use('/api/jobs', auth, jobsRoutes);
+app.use('/api/applications', auth, applicationsRoutes);
+app.use('/api/profiles', auth, profilesRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

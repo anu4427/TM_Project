@@ -1,0 +1,97 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <div class="dashboard-sidebar">
+    <div class="sidebar-menu">
+      <a routerLink="/recruiter/dashboard" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-tachometer-alt"></i>
+        Dashboard
+      </a>
+      <a routerLink="/post-job" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-plus-circle"></i>
+        Post Job
+      </a>
+      <a routerLink="/recruiter/posted-jobs" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-briefcase"></i>
+        Posted Jobs
+      </a>
+      <a routerLink="/recruiter/applications" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-file-alt"></i>
+        Applications
+      </a>
+      <a routerLink="/recruiter/messages" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-envelope"></i>
+        Messages
+      </a>
+      <a routerLink="/recruiter/settings" routerLinkActive="active" class="menu-item">
+        <i class="fas fa-cog"></i>
+        Settings
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="dashboard-main">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1>Recruiter Dashboard</h1>
+      <div class="user-actions">
+        <span class="welcome-text">Welcome, {{currentUser?.name || 'Recruiter'}}</span>
+        <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3>Posted Jobs</h3>
+        <div class="stat-value">{{postedJobs || 0}}</div>
+        <a routerLink="/post-job" class="stat-action">Post New Job</a>
+      </div>
+
+      <div class="stat-card">
+        <h3>Total Applications</h3>
+        <div class="stat-value">{{totalApplications || 0}}</div>
+        <a routerLink="/recruiter/applications" class="stat-action">View Applications</a>
+      </div>
+
+      <div class="stat-card">
+        <h3>Active Jobs</h3>
+        <div class="stat-value">{{activeJobs || 0}}</div>
+        <a routerLink="/recruiter/posted-jobs" class="stat-action">Manage Jobs</a>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2>Recent Applications</h2>
+        <button class="btn btn-primary" routerLink="/post-job">Post a Job</button>
+      </div>
+
+      <div class="empty-state" *ngIf="!hasApplications">
+        <div class="empty-state-content">
+          <i class="fas fa-file-alt empty-state-icon"></i>
+          <h3>No applications received yet</h3>
+          <p>Start receiving applications by posting your first job</p>
+          <button class="btn btn-primary" routerLink="/post-job">Post a Job Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Job Postings -->
+    <div class="dashboard-section">
+      <div class="section-header">
+        <h2>Active Job Postings</h2>
+      </div>
+
+      <div class="empty-state" *ngIf="!hasActiveJobs">
+        <div class="empty-state-content">
+          <i class="fas fa-briefcase empty-state-icon"></i>
+          <h3>No active job postings</h3>
+          <p>Create your first job posting to start receiving applications</p>
+          <button class="btn btn-primary" routerLink="/post-job">Create Job Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
