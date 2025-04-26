@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <a routerLink="/" class="logo">Job Portal</a>
+
+    <!-- Navigation Links -->
+    <div class="nav-links">
+      <a routerLink="/jobs" routerLinkActive="active" class="nav-link">Jobs</a>
+    </div>
+
+    <!-- Auth Buttons -->
+    <div class="auth-buttons">
+      <ng-container *ngIf="isLoggedIn">
+        <button class="btn-logout" (click)="logout()">Logout</button>
+      </ng-container>
+    </div>
+  </div>
+</nav>

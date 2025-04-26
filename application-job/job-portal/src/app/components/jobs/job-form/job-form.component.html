@@ -1,0 +1,130 @@
+<div class="job-form-container">
+  <h2>Post a New Job</h2>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="job-form">
+    <div class="form-group">
+      <label for="title">Job Title</label>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        class="form-control"
+        [class.is-invalid]="jobForm.get('title')?.invalid && jobForm.get('title')?.touched"
+      >
+      <div class="invalid-feedback" *ngIf="jobForm.get('title')?.invalid && jobForm.get('title')?.touched">
+        Job title is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="company">Company Name</label>
+      <input
+        type="text"
+        id="company"
+        formControlName="company"
+        class="form-control"
+        [class.is-invalid]="jobForm.get('company')?.invalid && jobForm.get('company')?.touched"
+      >
+      <div class="invalid-feedback" *ngIf="jobForm.get('company')?.invalid && jobForm.get('company')?.touched">
+        Company name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        id="location"
+        formControlName="location"
+        class="form-control"
+        [class.is-invalid]="jobForm.get('location')?.invalid && jobForm.get('location')?.touched"
+      >
+      <div class="invalid-feedback" *ngIf="jobForm.get('location')?.invalid && jobForm.get('location')?.touched">
+        Location is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Job Type</label>
+      <select
+        id="type"
+        formControlName="type"
+        class="form-control"
+        [class.is-invalid]="jobForm.get('type')?.invalid && jobForm.get('type')?.touched"
+      >
+        <option value="">Select job type</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Contract">Contract</option>
+        <option value="Internship">Internship</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="jobForm.get('type')?.invalid && jobForm.get('type')?.touched">
+        Job type is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Job Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        rows="4"
+        [class.is-invalid]="jobForm.get('description')?.invalid && jobForm.get('description')?.touched"
+      ></textarea>
+      <div class="invalid-feedback" *ngIf="jobForm.get('description')?.invalid && jobForm.get('description')?.touched">
+        Job description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="requirements">Requirements (one per line)</label>
+      <textarea
+        id="requirements"
+        formControlName="requirements"
+        class="form-control"
+        rows="4"
+        [class.is-invalid]="jobForm.get('requirements')?.invalid && jobForm.get('requirements')?.touched"
+      ></textarea>
+      <div class="invalid-feedback" *ngIf="jobForm.get('requirements')?.invalid && jobForm.get('requirements')?.touched">
+        Requirements are required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary (optional)</label>
+      <input
+        type="text"
+        id="salary"
+        formControlName="salary"
+        class="form-control"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="deadline">Application Deadline (optional)</label>
+      <input
+        type="date"
+        id="deadline"
+        formControlName="deadline"
+        class="form-control"
+      >
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="jobForm.invalid || isLoading">
+        <span class="spinner-border spinner-border-sm me-2" *ngIf="isLoading"></span>
+        Post Job
+      </button>
+      <button type="button" class="btn btn-secondary" routerLink="/jobs">Cancel</button>
+    </div>
+  </form>
+</div>

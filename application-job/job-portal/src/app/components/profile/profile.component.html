@@ -1,0 +1,121 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h2>Profile</h2>
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="profile-content" *ngIf="!isEditing">
+      <div class="profile-field">
+        <label>Email</label>
+        <div class="field-value">{{ profile.email }}</div>
+      </div>
+
+      <div class="profile-field">
+        <label>Role</label>
+        <div class="field-value">{{ profile.role }}</div>
+      </div>
+
+      <div class="profile-field" *ngIf="profile.name">
+        <label>Name</label>
+        <div class="field-value">{{ profile.name }}</div>
+      </div>
+
+      <div class="profile-field" *ngIf="profile.company">
+        <label>Company</label>
+        <div class="field-value">{{ profile.company }}</div>
+      </div>
+
+      <div class="profile-field" *ngIf="profile.phone">
+        <label>Phone</label>
+        <div class="field-value">{{ profile.phone }}</div>
+      </div>
+
+      <div class="profile-field" *ngIf="profile.location">
+        <label>Location</label>
+        <div class="field-value">{{ profile.location }}</div>
+      </div>
+
+      <div class="profile-field" *ngIf="profile.bio">
+        <label>Bio</label>
+        <div class="field-value">{{ profile.bio }}</div>
+      </div>
+
+      <button class="edit-button" (click)="toggleEdit()">Edit Profile</button>
+    </div>
+
+    <form class="edit-form" *ngIf="isEditing" (ngSubmit)="saveProfile()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="profile.email"
+          required
+          [readonly]="true"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="profile.name"
+          placeholder="Enter your name"
+        >
+      </div>
+
+      <div class="form-group" *ngIf="profile.role === 'company'">
+        <label for="company">Company</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          [(ngModel)]="profile.company"
+          placeholder="Enter company name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          [(ngModel)]="profile.phone"
+          placeholder="Enter phone number"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          [(ngModel)]="profile.location"
+          placeholder="Enter location"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea
+          id="bio"
+          name="bio"
+          [(ngModel)]="profile.bio"
+          placeholder="Enter your bio"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="cancel-button" (click)="cancelEdit()">Cancel</button>
+        <button type="submit" class="save-button">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div> 

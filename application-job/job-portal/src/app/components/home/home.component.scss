@@ -1,0 +1,345 @@
+.home-container {
+  background: #ffffff;
+  padding: 2rem;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #40E0D0 0%, #3BC8BA 100%);
+  border-radius: 15px;
+  color: white;
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+  }
+}
+
+.project-description {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+}
+
+.highlights {
+  margin-bottom: 4rem;
+
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    font-weight: 600;
+  }
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  color: white;
+}
+
+.animated-title {
+  margin-bottom: 3rem;
+  animation: float 3s ease-in-out infinite;
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #40E0D0;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(64, 224, 208, 0.2);
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-transform: uppercase;
+  }
+
+  .tagline {
+    font-size: 1.5rem;
+    color: #666;
+    font-weight: 400;
+    animation: fadeIn 1.5s ease-out;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+}
+
+.auth-options {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  animation: fadeIn 1.5s ease-out 0.5s both;
+
+  .btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &.btn-primary {
+      background: #40E0D0;
+      color: white;
+      border: none;
+
+      &:hover {
+        background: #3BC8BA;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
+      }
+    }
+
+    &.btn-outline {
+      background: transparent;
+      color: #40E0D0;
+      border: 2px solid #40E0D0;
+
+      &:hover {
+        background: rgba(64, 224, 208, 0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(64, 224, 208, 0.2);
+      }
+    }
+  }
+}
+
+.highlight-card {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(64, 224, 208, 0.15);
+  }
+
+  i {
+    color: #40E0D0;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.how-it-works {
+  margin-bottom: 4rem;
+  text-align: center;
+
+  h2 {
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    font-weight: 600;
+  }
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.step {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: #40E0D0;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1.5rem;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+.auth-section {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    .btn {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+
+      &.btn-primary {
+        background: #40E0D0;
+        color: white;
+        border: none;
+
+        &:hover {
+          background: #3BC8BA;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
+        }
+      }
+
+      &.btn-outline {
+        background: transparent;
+        color: #40E0D0;
+        border: 2px solid #40E0D0;
+
+        &:hover {
+          background: rgba(64, 224, 208, 0.1);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(64, 224, 208, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .project-description,
+  .auth-section {
+    padding: 2rem 1rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 1rem;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .project-description h2,
+  .highlights h2,
+  .how-it-works h2,
+  .auth-section h2 {
+    font-size: 1.8rem;
+  }
+} 

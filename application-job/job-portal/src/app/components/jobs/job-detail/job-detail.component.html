@@ -1,0 +1,56 @@
+<div class="job-detail-container">
+  <div class="header">
+    <button class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i> Back to Jobs
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Loading job details...
+  </div>
+
+  <div *ngIf="!isLoading && job" class="job-detail-content">
+    <div class="job-header">
+      <h1>{{ job.title }}</h1>
+      <h2>{{ job.company }}</h2>
+      <div class="job-meta">
+        <span class="location">
+          <i class="fas fa-map-marker-alt"></i> {{ job.location }}
+        </span>
+        <span class="job-type">
+          <i class="fas fa-briefcase"></i> {{ job.type }}
+        </span>
+        <span class="salary" *ngIf="job.salary">
+          <i class="fas fa-money-bill-wave"></i> {{ job.salary }}
+        </span>
+      </div>
+    </div>
+
+    <div class="job-description">
+      <h3>Job Description</h3>
+      <p>{{ job.description }}</p>
+    </div>
+
+    <div class="skills-section">
+      <h3>Requirements</h3>
+      <div class="requirements-list">
+        <ul>
+          <li *ngFor="let req of job.requirements">{{ req }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job-footer">
+      <div class="posted-date">
+        Posted on {{ job.postedDate | date:'mediumDate' }}
+      </div>
+      <button *ngIf="!isEmployer" class="apply-btn" (click)="applyForJob()">
+        Apply Now
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,282 @@
+<div class="edit-profile-container">
+  <div class="edit-profile-card">
+    <h2>Edit Profile</h2>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="success-message" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
+    <div class="loading" *ngIf="isLoading">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+      <div class="form-section">
+        <h3>Personal Information</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control"
+              [class.is-invalid]="hasError('username', 'required') || hasError('username', 'minlength')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('username', 'required')">
+              Username is required
+            </div>
+            <div class="invalid-feedback" *ngIf="hasError('username', 'minlength')">
+              Username must be at least 3 characters
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('email', 'required')">
+              Email is required
+            </div>
+            <div class="invalid-feedback" *ngIf="hasError('email', 'email')">
+              Please enter a valid email
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select
+              id="gender"
+              formControlName="gender"
+              class="form-control"
+              [class.is-invalid]="hasError('gender', 'required')"
+            >
+              <option value="">Select Gender</option>
+              <option *ngFor="let gender of genderOptions" [value]="gender.toLowerCase()">
+                {{ gender }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="hasError('gender', 'required')">
+              Gender is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              formControlName="phoneNumber"
+              class="form-control"
+              [class.is-invalid]="hasError('phoneNumber', 'required') || hasError('phoneNumber', 'pattern')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('phoneNumber', 'required')">
+              Phone number is required
+            </div>
+            <div class="invalid-feedback" *ngIf="hasError('phoneNumber', 'pattern')">
+              Please enter a valid 10-digit phone number
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Location Information</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="hometown">Hometown</label>
+            <input
+              type="text"
+              id="hometown"
+              formControlName="hometown"
+              class="form-control"
+              [class.is-invalid]="hasError('hometown', 'required')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('hometown', 'required')">
+              Hometown is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="currentLocation">Current Location</label>
+            <input
+              type="text"
+              id="currentLocation"
+              formControlName="currentLocation"
+              class="form-control"
+              [class.is-invalid]="hasError('currentLocation', 'required')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('currentLocation', 'required')">
+              Current location is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Professional Information</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="experience">Experience (Years)</label>
+            <input
+              type="number"
+              id="experience"
+              formControlName="experience"
+              class="form-control"
+              [class.is-invalid]="hasError('experience', 'required') || hasError('experience', 'min')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('experience', 'required')">
+              Experience is required
+            </div>
+            <div class="invalid-feedback" *ngIf="hasError('experience', 'min')">
+              Experience cannot be negative
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="department">Department</label>
+            <select
+              id="department"
+              formControlName="department"
+              class="form-control"
+              [class.is-invalid]="hasError('department', 'required')"
+            >
+              <option value="">Select Department</option>
+              <option *ngFor="let dept of departmentOptions" [value]="dept.toLowerCase()">
+                {{ dept }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="hasError('department', 'required')">
+              Department is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lastDesignation">Last Designation</label>
+            <input
+              type="text"
+              id="lastDesignation"
+              formControlName="lastDesignation"
+              class="form-control"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="lastJobExperience">Last Job Experience</label>
+            <input
+              type="text"
+              id="lastJobExperience"
+              formControlName="lastJobExperience"
+              class="form-control"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="reasonForLeaving">Reason for Leaving</label>
+            <textarea
+              id="reasonForLeaving"
+              formControlName="reasonForLeaving"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Additional Information</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="maritalStatus">Marital Status</label>
+            <select
+              id="maritalStatus"
+              formControlName="maritalStatus"
+              class="form-control"
+              [class.is-invalid]="hasError('maritalStatus', 'required')"
+            >
+              <option value="">Select Marital Status</option>
+              <option *ngFor="let status of maritalStatusOptions" [value]="status.toLowerCase()">
+                {{ status }}
+              </option>
+            </select>
+            <div class="invalid-feedback" *ngIf="hasError('maritalStatus', 'required')">
+              Marital status is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nationality">Nationality</label>
+            <input
+              type="text"
+              id="nationality"
+              formControlName="nationality"
+              class="form-control"
+              [class.is-invalid]="hasError('nationality', 'required')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('nationality', 'required')">
+              Nationality is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="languagesKnown">Languages Known (comma-separated)</label>
+            <input
+              type="text"
+              id="languagesKnown"
+              formControlName="languagesKnown"
+              class="form-control"
+              placeholder="English, Hindi, etc."
+              [class.is-invalid]="hasError('languagesKnown', 'required')"
+            >
+            <div class="invalid-feedback" *ngIf="hasError('languagesKnown', 'required')">
+              Languages known is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Interests</h3>
+        <div class="interests-group">
+          <div *ngFor="let interest of interestOptions" class="interest-option">
+            <input
+              type="checkbox"
+              [id]="interest"
+              [checked]="isInterestSelected(interest)"
+              (change)="onInterestChange($any($event.target).checked, interest)"
+            >
+            <label [for]="interest">{{ interest }}</label>
+          </div>
+        </div>
+        <div class="invalid-feedback" *ngIf="hasError('interests', 'required')">
+          Please select at least one interest
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">
+          Cancel
+        </button>
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="profileForm.invalid || isLoading"
+        >
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+          {{ isLoading ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div> 

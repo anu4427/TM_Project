@@ -1,0 +1,122 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h2>My Profile</h2>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="editProfile()">
+        <i class="fas fa-edit"></i> Edit Profile
+      </button>
+      <button class="btn btn-outline-danger" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div class="profile-content" *ngIf="profile && !isLoading">
+    <div class="profile-section">
+      <h3>Personal Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Username</label>
+          <span>{{ profile!.username }}</span>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <span>{{ profile!.email }}</span>
+        </div>
+        <div class="info-item">
+          <label>Gender</label>
+          <span>{{ profile!.gender | titlecase }}</span>
+        </div>
+        <div class="info-item">
+          <label>Phone Number</label>
+          <span>{{ profile!.phoneNumber }}</span>
+        </div>
+        <div class="info-item">
+          <label>Nationality</label>
+          <span>{{ profile!.nationality }}</span>
+        </div>
+        <div class="info-item">
+          <label>Marital Status</label>
+          <span>{{ profile!.maritalStatus | titlecase }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Location Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Hometown</label>
+          <span>{{ profile!.hometown }}</span>
+        </div>
+        <div class="info-item">
+          <label>Current Location</label>
+          <span>{{ profile!.currentLocation }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Professional Information</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Experience (Years)</label>
+          <span>{{ profile!.experience }}</span>
+        </div>
+        <div class="info-item">
+          <label>Department</label>
+          <span>{{ profile!.department | titlecase }}</span>
+        </div>
+        <div class="info-item">
+          <label>Last Designation</label>
+          <span>{{ profile!.lastDesignation }}</span>
+        </div>
+        <div class="info-item">
+          <label>Last Job Experience</label>
+          <span>{{ profile!.lastJobExperience }}</span>
+        </div>
+        <div class="info-item">
+          <label>Reason for Leaving</label>
+          <span>{{ profile!.reasonForLeaving }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>Skills & Interests</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Languages Known</label>
+          <div class="tag-list">
+            <span class="tag" *ngFor="let lang of profile.languagesKnown">{{ lang }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <label>Interests</label>
+          <div class="tag-list">
+            <span class="tag" *ngFor="let interest of profile.interests">{{ interest }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile-actions">
+    <a routerLink="/profile/edit" class="btn btn-primary">
+      <i class="fas fa-edit"></i> Edit Profile
+    </a>
+    <button class="btn btn-danger" (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </div>
+</div>
