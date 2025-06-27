@@ -1,0 +1,98 @@
+<div class="post-job-container">
+  <div class="post-job-card">
+    <h2>Post a New Job</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Job Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="jobForm.title"
+          required
+          placeholder="Enter job title"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company Name</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          [(ngModel)]="jobForm.company"
+          required
+          placeholder="Enter company name"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <select id="location" name="location" [(ngModel)]="jobForm.location" required>
+          <option value="">Select location</option>
+          <option value="Remote">Remote</option>
+          <option value="On-site">On-site</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Job Type</label>
+        <select id="type" name="type" [(ngModel)]="jobForm.type" required>
+          <option value="">Select job type</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Part-time">Part-time</option>
+          <option value="Contract">Contract</option>
+          <option value="Internship">Internship</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Job Description</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="jobForm.description"
+          required
+          placeholder="Enter job description"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Requirements</label>
+        <div class="requirements-list">
+          <div *ngFor="let requirement of jobForm.requirements; let i = index" class="requirement-item">
+            <input
+              type="text"
+              [(ngModel)]="jobForm.requirements[i]"
+              name="requirement{{i}}"
+              placeholder="Enter requirement"
+            >
+            <button
+              type="button"
+              class="remove-requirement"
+              (click)="removeRequirement(i)"
+              *ngIf="jobForm.requirements.length > 1"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="add-requirement"
+          (click)="addRequirement()"
+        >
+          Add Requirement
+        </button>
+      </div>
+
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button type="submit" class="submit-button">Post Job</button>
+    </form>
+  </div>
+</div> 

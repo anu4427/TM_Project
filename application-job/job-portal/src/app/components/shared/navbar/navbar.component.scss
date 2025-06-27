@@ -1,0 +1,252 @@
+.navbar {
+  position: static;
+  top: unset;
+  left: unset;
+  right: unset;
+  height: auto;
+  /* Apply gradient background */
+  background: linear-gradient(135deg, var(--primary-button-color) 0%, var(--hover-color) 100%);
+  /* Apply box shadow */
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+  z-index: auto;
+  padding: 1rem 0;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff; /* White color for logo */
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--header-footer-color); /* Off White on hover */
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.9); /* Light white for links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #ffffff; /* White on hover */
+      background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+    }
+
+    &.active {
+      color: #ffffff; /* White for active link */
+      background-color: rgba(255, 255, 255, 0.25); /* More transparent white background for active */
+    }
+  }
+}
+
+.auth-buttons {
+  .btn-logout {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--primary-button-color); /* Light Coral */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--hover-color); /* Sky Blue on hover */
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 16px;
+
+  span {
+    width: 100%;
+    height: 2px;
+    background: #ffffff; /* White for mobile menu icon lines */
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    span {
+      &:first-child {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:last-child {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .auth-buttons .btn-logout {
+    padding: 8px 20px;
+    font-size: 15px;
+  }
+
+  .nav-links,
+  .auth-buttons {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--primary-button-color); /* Light Coral background for mobile menu */
+    flex-direction: column;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  .nav-links {
+    gap: 20px;
+    align-items: stretch;
+    margin-left: 0;
+
+    .nav-link {
+      padding: 14px;
+      text-align: center;
+      border-radius: 6px;
+      color: #ffffff; /* White text for mobile links */
+
+      &:hover {
+        background: var(--hover-color); /* Sky Blue background on hover */
+      }
+    }
+  }
+
+  .auth-buttons {
+    top: auto;
+    gap: 8px;
+    padding-top: 0;
+    margin-left: 0;
+
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+/* The following styles appear to be for a specific hero-navbar variant and may not be needed globally */
+/* I will keep them but they might conflict or be redundant if this file is for a shared component */
+.hero-navbar {
+  /* Use the primary gradient similar to the footer */
+  background: linear-gradient(135deg, var(--primary-button-color) 0%, var(--hover-color) 100%);
+  border-radius: 24px;
+  width: 100vw;
+  min-height: 70px;
+  margin: 0 auto 0.5rem auto;
+  padding: 1.5rem 3rem 1.5rem 3rem;
+  /* Use the consistent card shadow color */
+  box-shadow: 0 4px 24px var(--card-shadow-color);
+  /* Ensure text is readable */
+  color: #fff;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  justify-content: space-between;
+  gap: 10rem;
+  margin: 0 auto;
+}
+
+.navbar-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+  color: #fff !important;
+  text-decoration: none;
+  flex: 0 1 auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.navbar-link {
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.logout-btn {
+  background: #3BC8BA;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.7rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-left: auto;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.logout-btn:hover {
+  background: #2fa89e;
+  transform: translateY(-2px) scale(1.04);
+}

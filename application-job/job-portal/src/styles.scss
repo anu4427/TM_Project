@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  --background-color: #C0C0C0;  /* Silver */
+  --header-footer-color: #F9F9F9;
+  --primary-button-color: #FFB6B6;
+  --hover-color: #87CEEB;  /* Sky Blue */
+  --card-shadow-color: #E0E0E0;
+  --success-message-color: #D2F8D2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-button-color);
+  border-color: var(--primary-button-color);
+  
+  &:hover {
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+  }
+}
+
+.card {
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+}
+
+.alert-success {
+  background-color: var(--success-message-color);
+}

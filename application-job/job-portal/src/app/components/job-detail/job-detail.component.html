@@ -1,0 +1,53 @@
+<div class="job-detail-container" *ngIf="job">
+  <div class="job-header">
+    <h1>{{ job.title }}</h1>
+    <div class="company-info">
+      <span class="company-name">{{ job.company }}</span>
+      <div class="job-meta">
+        <span class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ job.location }}
+        </span>
+        <span class="type">
+          <i class="fas fa-briefcase"></i>
+          {{ job.type }}
+        </span>
+        <span class="posted-date">
+          <i class="fas fa-calendar"></i>
+          Posted: {{ job.postedDate | date }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="job-content">
+    <div class="description">
+      <h2>Job Description</h2>
+      <p>{{ job.description }}</p>
+    </div>
+
+    <div class="requirements">
+      <h2>Requirements</h2>
+      <ul>
+        <li *ngFor="let requirement of job.requirements">
+          {{ requirement }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="action-buttons" *ngIf="!isEmployer">
+    <button 
+      class="apply-button" 
+      [class.applied]="hasApplied"
+      (click)="applyForJob()"
+      [disabled]="hasApplied"
+    >
+      {{ hasApplied ? 'Applied' : 'Apply Now' }}
+    </button>
+  </div>
+</div>
+
+<div class="loading" *ngIf="!job">
+  Loading job details...
+</div> 

@@ -1,0 +1,18 @@
+<div class="app-container">
+  <app-navbar></app-navbar>
+  <main [ngClass]="{'main-content': true}">
+    <!-- <div class="welcome-section">
+      <div class="animated-title">
+        <h1>WELCOME TO JOB APPLICATION PORTAL</h1>
+        <p class="tagline">Your Gateway to Professional Success</p>
+      </div>
+      
+      <div class="auth-options">
+        <a routerLink="/login" class="btn btn-primary">Login</a>
+        <a routerLink="/register" class="btn btn-outline">Sign Up</a>
+      </div>
+    </div> -->
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
+</div>

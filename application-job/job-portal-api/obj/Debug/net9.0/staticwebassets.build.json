@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "zhUL9g4erBoHW2//5+Lx1qZ19RvaT4Dkn41duDUd4OI=",
+  "Source": "job-portal-api",
+  "BasePath": "_content/job-portal-api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,70 @@
+<div class="job-list-container">
+  
+  <div class="content-wrapper">
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search jobs...">
+        <select class="select-input">
+          <option value="">All Locations</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="delhi">Delhi</option>
+        </select>
+        <select class="select-input">
+          <option value="">All Types</option>
+          <option value="full-time">Full-time</option>
+          <option value="contract">Contract</option>
+          <option value="part-time">Part-time</option>
+          <option value="internship">Internship</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Job Cards -->
+    <div class="job-cards">
+      <div class="job-card" *ngFor="let job of jobs">
+        <div class="job-card-header">
+          <h3>{{ job.title }}</h3>
+          <p class="company-name">{{ job.company }}</p>
+        </div>
+        <div class="job-card-details">
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{ job.location }}</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-briefcase"></i>
+            <span>{{ job.type }}</span>
+          </div>
+          <div class="detail-item" *ngIf="job.salary">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>{{ job.salary }}</span>
+          </div>
+        </div>
+        <div class="job-card-footer">
+          <span class="posted-date">Posted: {{ job.postedDate | date:'mediumDate' }}</span>
+          <button class="view-btn" [routerLink]="['/jobs', job.id]" *ngIf="isLoggedIn">
+            View Details
+          </button>
+          <button class="view-btn login-required" routerLink="/login" *ngIf="!isLoggedIn" (click)="onViewJobClick()">
+            Login to View
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state" *ngIf="isLoading">
+      <div class="spinner"></div>
+      <p>Loading jobs...</p>
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state" *ngIf="errorMessage">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,16 @@
+<!-- <nav class="navbar" *ngIf="authService.isAuthenticated()">
+  <div class="navbar-brand">
+    <a routerLink="/dashboard">Job Portal</a>
+  </div>
+  <div class="navbar-menu"> -->
+    <!-- <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a> -->
+    <!-- <a routerLink="/jobs" routerLinkActive="active">Jobs</a>
+    <a *ngIf="authService.getCurrentUser()?.role === 'company'" routerLink="/post-job" routerLinkActive="active">Post Job</a>
+    <a routerLink="/profile" routerLinkActive="active">Profile</a> -->
+    <!-- <button class="logout-button" (click)="authService.logout()">Logout</button>
+  </div>
+</nav> -->
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main> 

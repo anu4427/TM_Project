@@ -1,0 +1,122 @@
+.footer {
+  background-color: #40E0D0;
+  color: white;
+  width: 100vw;
+  min-width: 100vw;
+  padding: 1.5rem 0 0.5rem;
+  margin-top: 2rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+  gap: 3rem;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+
+  h4 {
+    color: #ffffff;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: #ecf0f1;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 1rem;
+
+      a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+        padding: 0.25rem 0;
+
+        &:hover {
+          color: #40E0D0;
+        }
+      }
+    }
+  }
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  p {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 2rem;
+  }
+
+  .footer-section {
+    text-align: center;
+    margin-bottom: 1rem;
+
+    ul li {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+.footer.hero-footer {
+  background: linear-gradient(135deg, var(--primary-button-color) 0%, var(--hover-color) 100%);
+  border-radius: 24px;
+  max-width: 90vw;
+  margin: 2rem auto 0 auto;
+  padding: 3rem 2rem 1.5rem 2rem;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 4px 24px var(--card-shadow-color);
+
+  .footer-main-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+    color: #ffffff;
+  }
+  .footer-sub-text {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    color: #e0e0e0;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    p {
+      color: #e0e0e0;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+} 
