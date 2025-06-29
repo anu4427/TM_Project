@@ -1,0 +1,134 @@
+.job-list-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.filters {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background-color: var(--header-footer-color);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+
+  .search-box {
+    flex: 1;
+    min-width: 300px;
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--card-shadow-color);
+      border-radius: 4px;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-button-color);
+      }
+    }
+  }
+
+  .filter-options {
+    display: flex;
+    gap: 1rem;
+
+    select {
+      padding: 0.75rem;
+      border: 1px solid var(--card-shadow-color);
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: white;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-button-color);
+      }
+    }
+  }
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.job-card {
+  background: var(--header-footer-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--card-shadow-color);
+    background-color: var(--hover-color);
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    color: #333;
+  }
+
+  .company {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .job-details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      i {
+        color: var(--primary-button-color);
+      }
+    }
+  }
+
+  .posted-date {
+    color: #999;
+    font-size: 0.9rem;
+  }
+}
+
+.no-jobs {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  background: var(--header-footer-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+}
+
+@media (max-width: 768px) {
+  .job-list-container {
+    padding: 1rem;
+  }
+
+  .filters {
+    flex-direction: column;
+
+    .search-box {
+      min-width: 100%;
+    }
+
+    .filter-options {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+} 

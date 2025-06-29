@@ -1,0 +1,51 @@
+<div class="job-list-container">
+  <div class="filters">
+    <div class="search-box">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearch()"
+        placeholder="Search jobs..."
+      >
+    </div>
+    <div class="filter-options">
+      <select [(ngModel)]="selectedLocation" (ngModelChange)="onLocationChange()">
+        <option value="">All Locations</option>
+        <option value="Remote">Remote</option>
+        <option value="On-site">On-site</option>
+        <option value="Hybrid">Hybrid</option>
+      </select>
+      <select [(ngModel)]="selectedType" (ngModelChange)="onTypeChange()">
+        <option value="">All Types</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Contract">Contract</option>
+        <option value="Internship">Internship</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="jobs-grid">
+    <div *ngFor="let job of filteredJobs" class="job-card" (click)="viewJobDetails(job.id)">
+      <h3>{{ job.title }}</h3>
+      <div class="company">{{ job.company }}</div>
+      <div class="job-details">
+        <span class="location">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ job.location }}
+        </span>
+        <span class="type">
+          <i class="fas fa-briefcase"></i>
+          {{ job.type }}
+        </span>
+      </div>
+      <div class="posted-date">
+        Posted: {{ job.postedDate | date }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredJobs.length === 0" class="no-jobs">
+    No jobs found matching your criteria.
+  </div>
+</div> 

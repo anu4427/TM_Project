@@ -1,0 +1,123 @@
+.navbar {
+  background: linear-gradient(135deg, var(--primary-button-color) 0%, var(--hover-color) 100%);
+  box-shadow: 0 2px 4px var(--card-shadow-color);
+  padding: 1rem 0;
+  
+  /* Style to remove gradient on jobs page */
+  &.jobs-page-navbar {
+    background: none;
+    background-color: var(--header-footer-color); /* Optional: Set a solid background color */
+    box-shadow: none; /* Optional: Remove box shadow */
+
+    .navbar-brand,
+    .nav-link,
+    .navbar-toggler,
+    .navbar-menu .welcome-text {
+        color: #333 !important; /* Adjust text color for visibility */
+    }
+
+    .logout-btn {
+        background: var(--primary-button-color);
+        color: white;
+
+        &:hover {
+            background: var(--hover-color);
+        }
+    }
+  }
+  
+  .navbar-brand {
+    font-weight: 600;
+    color: #ffffff !important;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--header-footer-color) !important;
+    }
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+
+    &:hover {
+      color: #ffffff !important;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    &.active {
+      color: var(--hover-color) !important;
+      background-color: var(--header-footer-color) !important;
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    color: #ffffff;
+    
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    .navbar-nav {
+      background-color: var(--hover-color);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.hero-navbar {
+  background: linear-gradient(135deg, var(--primary-button-color) 0%, var(--hover-color) 100%);
+  border-radius: 18px;
+  max-width: 90vw;
+  margin: 1.5rem auto 2rem auto;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 24px var(--card-shadow-color);
+  color: #fff;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+}
+
+.logout-btn {
+  background: var(--hover-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 2.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px var(--card-shadow-color);
+
+  &:hover {
+    background: var(--primary-button-color);
+  transform: translateY(-2px) scale(1.04);
+  }
+} 
